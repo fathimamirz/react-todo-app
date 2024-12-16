@@ -4,11 +4,11 @@ import SearchBox from './SearchBox';
 import {MODE_SEARCH, MODE_CREATE} from '../../services/mode';
 
 export default function InputWrapper(props) {
-    const {mode, addNew, query, setSearchQuery} = props;
+    const {mode, addNew, query, setSearchQuery, items} = props;
 
     switch (mode) {
         case MODE_CREATE:
-            return <InputBox {...{addNew}}/>;
+            return <InputBox {...{addNew, items}}/>;
 
         case MODE_SEARCH:
             return <SearchBox {...{query, setSearchQuery}}/>;
