@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class CheckBox extends Component {
     constructor(props) {
@@ -9,14 +9,28 @@ class CheckBox extends Component {
     }
 
     handleChange(e) {
-        const {checked} = e.target;
+        const { checked } = e.target;
 
-        this.setState({checked});
-        this.props.onChange(checked);
+        const confirmAction = window.confirm("Are you sure you want to confirm this task as completed?");
+
+        if (confirmAction) {
+           
+            this.setState({ checked });
+            this.props.onChange(checked);
+        } else {
+            
+            e.target.checked = this.state.checked;
+        }
     }
 
     render() {
-        return (<input type="checkbox" checked={this.state.checked} onChange={this.handleChange.bind(this)}/>);
+        return (
+            <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleChange.bind(this)}
+            />
+        );
     }
 }
 

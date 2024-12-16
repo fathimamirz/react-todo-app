@@ -1,9 +1,9 @@
 import React from 'react';
 import TodoItem from './TodoItem';
-import {MSG_NO_ITEMS} from '../../assets/text/en_US';
+import { MSG_NO_ITEMS } from '../../assets/text/en_US';
 
 export default function FilteredList(props) {
-    const {items, changeStatus} = props;
+    const { items, changeStatus } = props;
 
     if (items.length === 0) {
         return (
@@ -14,7 +14,14 @@ export default function FilteredList(props) {
     return (
         <ul className="list-unstyled">
             {items.map(item => (
-                <TodoItem key={item.id} data={item} changeStatus={changeStatus}/>
+                <li key={item.id} className={`todo-item ui-state-default ${item.completed ? 'completed' : 'pending'}`}>
+                    <div className="checkbox">
+                        <label>
+                            <TodoItem data={item} changeStatus={changeStatus} />
+                        </label>
+                    </div>
+                    
+                </li>
             ))}
         </ul>
     );
